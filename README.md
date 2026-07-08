@@ -1,9 +1,7 @@
-# Project Structure
-
-```text
-VLM-Finetuning/
+workspace/
 ├── batch_extract.py               # Main execution script for batch inference
 ├── create_jsonl.py                # Script to prepare/format training data into JSONL
+├── evaluate.py                    # Script to evaluate model performance
 ├── train_lora.py                  # Script to fine-tune the model using LoRA
 │
 ├── data/                          # Dataset directory
@@ -12,13 +10,21 @@ VLM-Finetuning/
 │   └── val/                       # Validation data splits
 │       ├── GT/                    # Ground Truth files for validation
 │       └── PDF/                   # Input directory (Source PDFs)
-│           ├── invoice_1.pdf
-│           └── invoice_2.pdf
 │
 ├── present_runs/                  # Inference outputs and logs
 │   └── predictions_epoch2_val/    # Output directory (Extracted data)
-│       ├── invoice_1.json
-│       └── invoice_2.json
 │
-└── qwen3b_lora/                   # Saved model checkpoints
-    └── adapter_epoch_2/           # Fine-tuned LoRA adapter weights
+└── qwen3b_lora/                   # Saved model checkpoints and training logs
+    ├── adapter_epoch_1/           # LoRA adapter weights (Epoch 1)
+    ├── ...                        # (Epoch 2 & 3 weights)
+    ├── adapter_epoch_4/           # LoRA adapter weights (Epoch 4)
+    │
+    └── plots/                     # Training metrics and graphs
+        ├── epoch_01/
+        ├── ...
+        └── epoch_04/
+            ├── epoch_wall_time.png
+            ├── grad_norm.png
+            ├── loss_vs_epoch.png
+            ├── loss_vs_step.png
+            └── lr_schedule.png
