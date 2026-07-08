@@ -1,3 +1,4 @@
+#Project Structure
 ```
 workspace/
 ├── batch_extract.py               # Main execution script for batch inference
