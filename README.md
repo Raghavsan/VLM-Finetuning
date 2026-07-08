@@ -13,7 +13,15 @@ workspace/
 │       └── PDF/                   # Input directory (Source PDFs)
 │
 ├── present_runs/                  # Inference outputs and logs
-│   └── predictions_epoch2_val/    # Output directory (Extracted data)
+│   ├── predictions_epoch1/        # Inference outputs for Epoch 1
+│   │   ├── train/                 # Predictions on training set
+│   │   ├── test/                  # Predictions on test set
+│   │   └── val/                   # Predictions on validation set
+│   ├── ...                        # (Epoch 2 & 3 outputs)
+│   └── predictions_epoch4/        # Inference outputs for Epoch 4
+│       ├── train/
+│       ├── test/
+│       └── val/
 │
 └── qwen3b_lora/                   # Saved model checkpoints and training logs
     ├── adapter_epoch_1/           # LoRA adapter weights (Epoch 1)
