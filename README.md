@@ -1,3 +1,4 @@
+```
 workspace/
 ├── batch_extract.py               # Main execution script for batch inference
 ├── create_jsonl.py                # Script to prepare/format training data into JSONL
@@ -28,3 +29,4 @@ workspace/
             ├── loss_vs_epoch.png
             ├── loss_vs_step.png
             └── lr_schedule.png
+```
