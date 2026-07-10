@@ -8,6 +8,22 @@ os.environ["CUDA_MODULE_LOADING"] = "LAZY"
 os.environ["TORCH_COMPILE_DISABLE"] = "1"
 os.environ["TORCHINDUCTOR_DISABLE"] = "1"
 
+# ==============================================================================
+# PURPOSE: Fine-tunes the Qwen2.5-VL-3B-Instruct model using Unsloth and PEFT LoRA,
+#          featuring custom epoch-level logging, chart generation, and checkpointing.
+#
+# FUNCTIONALITY:
+# 1. Configures environment overrides and initializes custom debugging proxies
+#    for PyTorch operations to isolate potential JIT/CUDA environment quirks.
+# 2. Leverages FastVisionModel to apply a parameterized LoRA adapter configuration
+#    targeting both language and vision layers, or resumes from an existing adapter.
+# 3. Loads visual training and validation JSONL datasets, applying sequence length
+#    constraints and custom multi-modal vision collators via the SFTTrainer.
+# 4. Implements EpochMonitorCallback to handle end-of-epoch triggers: saves discrete
+#    adapter weights, appends metrics to a continuous CSV log, and draws 5 custom
+#    Matplotlib charts (tracking steps, losses, wall-clock time, LR, and grad norms).
+# ==============================================================================
+
 import torch
 torch._C._jit_set_profiling_executor(False)
 torch._C._jit_set_profiling_mode(False)
