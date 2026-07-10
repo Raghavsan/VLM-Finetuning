@@ -7,6 +7,21 @@ from transformers import Qwen2_5_VLForConditionalGeneration, AutoProcessor
 from peft import PeftModel
 from qwen_vl_utils import process_vision_info
 
+# ==============================================================================
+# SCRIPT: batch_extract.py
+# PURPOSE: Executes batched visual inference on invoice PDFs using a fine-tuned
+#          Qwen2.5-VL model with LoRA adapter weights.
+# To run batched inference for base model, comment out ADAPTER_PATH, and model = PeftModel.from_pretrained(model, ADAPTER_PATH)
+# FUNCTIONALITY:
+# 1. Loads the base Qwen2.5-VL-3B-Instruct model and overlays a fine-tuned LoRA
+#    checkpoint adapter to optimize structured key-value field extraction.
+# 2. Iterates through a source folder of raw PDFs in batches (size of 20), rendering
+#    the first 3 pages of each document into temporary 150 DPI PNG images.
+# 3. Formats batch text templates and merges sequential visual inputs natively via
+#    qwen_vl_utils before running tensor tokenization.
+# 4. Generates non-obfuscated responses using greedy generation, decoding the raw 
+#    outputs into flat JSON strings saved directly matching original file names.
+# ==============================================================================
 
 # ==========================================
 PDF_FOLDER  = "/workspace/data/val/PDF"
