@@ -2,6 +2,18 @@ import os
 import json
 from pdf2image import convert_from_path
 
+# ==============================================================================
+# PURPOSE: Prepares raw invoice datasets for fine-tuning VLMs via Unsloth.
+#
+# FUNCTIONALITY:
+# 1. Converts input PDFs (from data/train/PDF and data/val/PDF) into PNG images
+#    (capped at 4 pages) to preserve structural visual layouts.
+# 2. Extracts and flattens ground truth labels from data/*/GT/ matching a strict
+#    9-field extraction schema (handling missing values as null).
+# 3. Compiles images and text prompts into standard conversational JSONL formats
+#    (train_comp_data_final.jsonl and val_comp_data_final.jsonl) containing
+#    multi-image 'user' entries and structured 'assistant' target JSON strings.
+# ==============================================================================
 
 FIELDS_TO_EXTRACT = {
     "invoice_number", "invoice_date", "vendor_name", "customer_name",
