@@ -57,8 +57,8 @@ Training was run for 11 epochs. Training loss converged toward zero throughout, 
 | Epoch | Train Loss | Val Loss | Test F1 |
 |---|---|---|---|
 | 0 (baseline) | — | 4.579 | — |
-| 1 | 0.2742 | 0.0653 | — |
-| 2 | 0.0154 | **0.0654** ← val minimum | 93.71% |
+| 1 | 0.2742 | **0.0653** ← val minimum | — |
+| 2 | 0.0154 | 0.0654 | 93.71% |
 | 3 | 0.0107 | 0.0673 | — |
 | 4 | 0.0106 | 0.0706 | **94.28%** ← selected |
 | 5 | 0.0161 | 0.0740 | — |
