@@ -64,7 +64,7 @@ Training was run for 11 epochs. Training loss converged toward zero throughout, 
 | 5 | 0.0161 | 0.0740 | — |
 | 6 | 0.0080 | 0.0727 | — |
 
-Validation cross-entropy loss reaches its minimum at **Epoch 2** (`0.0654`) and drifts upward from there — a classical early indicator of overfitting. However, discrete extraction F1 and field accuracy on the held-out test set continue improving through **Epoch 4** before plateauing.
+Validation cross-entropy loss reaches its minimum at **Epoch 1** (`0.0653`) and drifts upward from there — a classical early indicator of overfitting. However, discrete extraction F1 and field accuracy on the held-out test set continue improving through **Epoch 4** before plateauing.
 
 This divergence between cross-entropy loss and task-level F1 is expected: cross-entropy is sensitive to token-level probability distributions, while extraction F1 measures whether the final extracted value string is correct after normalization. Small increases in cross-entropy do not necessarily translate to degraded extraction quality.
 
