@@ -1,4 +1,4 @@
-# Qwen2.5-VL-3B Invoice Extraction — Fine-tuning Report
+# Qwen2.5-VL-3B Invoice Extraction — Fine-Tuning Report
 
 ## Overview
 
